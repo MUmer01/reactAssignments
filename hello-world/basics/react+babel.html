@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello World</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        class Name extends React.Component {
+            render() {
+                const { myName } = this.props
+                return myName
+            }
+        }
+
+        class PrintName extends React.Component {
+            render() {
+                const { myName } = this.props
+                return <div>
+                    <p style={{ backgroundColor: '#ddd' }}>
+                        <Name myName={myName} />
+                    </p>
+                </div>;
+            }
+        }
+
+        ReactDOM.render(
+            <div>
+                Name: <PrintName myName="umer" />
+                Last Name: <PrintName myName="xyz" />
+            </div>,
+            root)
+    </script>
+</body>
+
+</html>
