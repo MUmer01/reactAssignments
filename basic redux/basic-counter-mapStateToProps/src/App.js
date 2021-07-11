@@ -1,7 +1,7 @@
 import "./App.css";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import Counter from "./Counter";
+import CounterComponent from "./Counter";
 
 // Reducer
 const counter = (state = 0, action) => {
@@ -35,7 +35,7 @@ const App = () => {
           INCREMENT
         </button>
         <b>
-          <Counter />
+          <CounterComponent abc="xyz" />
         </b>
         <button
           onClick={() => {
