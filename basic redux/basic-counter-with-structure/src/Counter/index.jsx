@@ -1,14 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
 import { reducerCases } from "../Reducer/type";
+import Input from "../Components/input";
 
 const CounterComponent = (props) => {
+  const [value, setValue] = React.useState("");
+
   return (
     <div>
+      <Input
+        type="number"
+        afterChange={(value) => {
+          setValue(value);
+        }}
+      />
+      <p>{value}</p>
       <div>
         <button
           onClick={() => {
-            props.increment();
+            props.increment(value);
           }}
         >
           INCREMENT
@@ -18,7 +28,7 @@ const CounterComponent = (props) => {
       <div>
         <button
           onClick={() => {
-            props.decrement();
+            props.decrement(value);
           }}
         >
           DECREMENT
@@ -38,11 +48,19 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    increment: () => {
-      dispatch({ type: reducerCases.INCREMENT });
+    increment: (value) => {
+      dispatch({
+        type: reducerCases.INCREMENT,
+        payload: {
+          incrementBy: value,
+        },
+      });
     },
-    decrement: () => {
-      dispatch({ type: reducerCases.DECREMENT });
+    decrement: (value) => {
+      dispatch({
+        type: reducerCases.DECREMENT,
+        decrementBy: value,
+      });
     },
   };
 };

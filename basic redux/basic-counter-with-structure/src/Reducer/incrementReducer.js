@@ -11,9 +11,12 @@ export const incrementCounter = (state = initialState, action) => {
     case reducerCases.INCREMENT: {
       // const copy = { ...state };
       // copy.counter++;
+      const value = action.payload.incrementBy
+        ? parseInt(action.payload.incrementBy)
+        : 1;
       return {
         ...state,
-        counter: state.counter + 1,
+        counter: state.counter + value,
       };
     }
     default:
